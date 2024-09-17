@@ -4,7 +4,7 @@ import (
 	_ "github.com/amacneil/dbmate/v2/pkg/driver/postgres"
 	"github.com/bufbuild/protovalidate-go"
 	"github.com/joho/godotenv"
-	"github.com/quinta-nails/protobuf/gen/go/telegram_backend"
+	pb "github.com/quinta-nails/protobuf/gen/go/telegram_backend"
 	"github.com/quinta-nails/telegram-backend/internal/db"
 	"github.com/quinta-nails/telegram-backend/internal/server"
 	"google.golang.org/grpc"
@@ -12,7 +12,7 @@ import (
 )
 
 type Service struct {
-	telegram_backend.UnimplementedTelegramBackendServiceServer
+	pb.UnimplementedTelegramBackendServiceServer
 	db        *db.Queries
 	validator *protovalidate.Validator
 }
@@ -46,7 +46,7 @@ func main() {
 	service.db = dbConnection
 
 	grpcServer := grpc.NewServer()
-	telegram_backend.RegisterTelegramBackendServiceServer(grpcServer, service)
+	pb.RegisterTelegramBackendServiceServer(grpcServer, service)
 
 	err = server.ListenAndServe(grpcServer)
 	if err != nil {

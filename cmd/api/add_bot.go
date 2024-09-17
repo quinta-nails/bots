@@ -5,13 +5,13 @@ import (
 	"database/sql"
 	"errors"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/quinta-nails/protobuf/gen/go/telegram_backend"
+	pb "github.com/quinta-nails/protobuf/gen/go/telegram_backend"
 	"github.com/quinta-nails/telegram-backend/internal/db"
 	"github.com/quinta-nails/telegram-backend/internal/helpers"
 )
 
-func (s *Service) AddBot(ctx context.Context, in *telegram_backend.AddBotRequest) (*telegram_backend.AddBotResponse, error) {
-	resp := &telegram_backend.AddBotResponse{}
+func (s *Service) AddBot(ctx context.Context, in *pb.AddBotRequest) (*pb.AddBotResponse, error) {
+	resp := &pb.AddBotResponse{}
 
 	err := s.validator.Validate(in)
 	if err != nil {
