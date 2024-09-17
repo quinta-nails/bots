@@ -9,9 +9,17 @@ import (
 	"time"
 )
 
-type User struct {
+type Bot struct {
 	ID        int64
+	Token     string
 	FirstName string
-	LastName  sql.NullString
+	Username  string
 	CreatedAt time.Time
+}
+
+type TelegramUser struct {
+	UserID     int64
+	TelegramID int64
+	Username   sql.NullString
+	CreatedAt  time.Time
 }

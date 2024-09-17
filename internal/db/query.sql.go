@@ -9,19 +9,20 @@ import (
 	"context"
 )
 
-const getByID = `-- name: GetByID :one
-SELECT id, first_name, last_name, created_at
-FROM users
-WHERE id = $1
+const getBotByToken = `-- name: GetBotByToken :one
+SELECT id, token, first_name, username, created_at
+FROM bots
+WHERE token = $1
 `
 
-func (q *Queries) GetByID(ctx context.Context, id int64) (User, error) {
-	row := q.db.QueryRowContext(ctx, getByID, id)
-	var i User
+func (q *Queries) GetBotByToken(ctx context.Context, token string) (Bot, error) {
+	row := q.db.QueryRowContext(ctx, getBotByToken, token)
+	var i Bot
 	err := row.Scan(
 		&i.ID,
+		&i.Token,
 		&i.FirstName,
-		&i.LastName,
+		&i.Username,
 		&i.CreatedAt,
 	)
 	return i, err
