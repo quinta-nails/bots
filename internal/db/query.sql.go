@@ -9,6 +9,40 @@ import (
 	"context"
 )
 
+const addBot = `-- name: AddBot :one
+INSERT INTO bots (
+    token,
+    first_name,
+    username
+)
+VALUES (
+    $1,
+    $2,
+    $3
+)
+ON CONFLICT (token) DO NOTHING
+RETURNING id, token, first_name, username, created_at
+`
+
+type AddBotParams struct {
+	Token     string
+	FirstName string
+	Username  string
+}
+
+func (q *Queries) AddBot(ctx context.Context, arg AddBotParams) (Bot, error) {
+	row := q.db.QueryRowContext(ctx, addBot, arg.Token, arg.FirstName, arg.Username)
+	var i Bot
+	err := row.Scan(
+		&i.ID,
+		&i.Token,
+		&i.FirstName,
+		&i.Username,
+		&i.CreatedAt,
+	)
+	return i, err
+}
+
 const getBotByToken = `-- name: GetBotByToken :one
 SELECT id, token, first_name, username, created_at
 FROM bots

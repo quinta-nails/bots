@@ -4,7 +4,9 @@ go 1.23.0
 
 require (
 	github.com/amacneil/dbmate/v2 v2.20.0
+	github.com/bufbuild/protovalidate-go v0.6.5
 	github.com/caarlos0/env/v11 v11.2.2
+	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
 	github.com/joho/godotenv v1.5.1
 	github.com/quinta-nails/protobuf v0.0.1
 	google.golang.org/grpc v1.66.2
@@ -13,7 +15,6 @@ require (
 require (
 	buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go v1.34.2-20240717164558-a6c49f84cc0f.2 // indirect
 	github.com/antlr4-go/antlr/v4 v4.13.0 // indirect
-	github.com/bufbuild/protovalidate-go v0.6.5 // indirect
 	github.com/google/cel-go v0.21.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.22.0 // indirect
 	github.com/lib/pq v1.10.9 // indirect
