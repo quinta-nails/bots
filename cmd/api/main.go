@@ -6,13 +6,13 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/quinta-nails/bots/internal/db"
 	"github.com/quinta-nails/bots/internal/server"
-	pb "github.com/quinta-nails/protobuf/gen/go/telegram_backend"
+	pb "github.com/quinta-nails/protobuf/gen/go/bots"
 	"google.golang.org/grpc"
 	"log"
 )
 
 type Service struct {
-	pb.UnimplementedTelegramBackendServiceServer
+	pb.UnimplementedTelegramBotsServiceServer
 	db        *db.Queries
 	validator *protovalidate.Validator
 }
@@ -46,7 +46,7 @@ func main() {
 	service.db = dbConnection
 
 	grpcServer := grpc.NewServer()
-	pb.RegisterTelegramBackendServiceServer(grpcServer, service)
+	pb.RegisterTelegramBotsServiceServer(grpcServer, service)
 
 	err = server.ListenAndServe(grpcServer)
 	if err != nil {

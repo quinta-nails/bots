@@ -7,7 +7,7 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/quinta-nails/bots/internal/db"
 	"github.com/quinta-nails/bots/internal/helpers"
-	pb "github.com/quinta-nails/protobuf/gen/go/telegram_backend"
+	pb "github.com/quinta-nails/protobuf/gen/go/bots"
 )
 
 func (s *Service) AddBot(ctx context.Context, in *pb.AddBotRequest) (*pb.AddBotResponse, error) {
