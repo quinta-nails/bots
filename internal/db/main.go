@@ -3,7 +3,7 @@ package db
 import (
 	"database/sql"
 	"github.com/caarlos0/env/v11"
-	"github.com/quinta-nails/telegram-backend/internal/config"
+	"github.com/quinta-nails/bots/internal/config"
 )
 
 func NewDB() (*Queries, error) {

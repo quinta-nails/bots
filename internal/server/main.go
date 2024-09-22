@@ -3,7 +3,7 @@ package server
 import (
 	"fmt"
 	"github.com/caarlos0/env/v11"
-	"github.com/quinta-nails/telegram-backend/internal/config"
+	"github.com/quinta-nails/bots/internal/config"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"log"

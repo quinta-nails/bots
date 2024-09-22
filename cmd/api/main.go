@@ -4,9 +4,9 @@ import (
 	_ "github.com/amacneil/dbmate/v2/pkg/driver/postgres"
 	"github.com/bufbuild/protovalidate-go"
 	"github.com/joho/godotenv"
+	"github.com/quinta-nails/bots/internal/db"
+	"github.com/quinta-nails/bots/internal/server"
 	pb "github.com/quinta-nails/protobuf/gen/go/telegram_backend"
-	"github.com/quinta-nails/telegram-backend/internal/db"
-	"github.com/quinta-nails/telegram-backend/internal/server"
 	"google.golang.org/grpc"
 	"log"
 )

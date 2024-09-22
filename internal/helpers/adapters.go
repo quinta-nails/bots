@@ -1,8 +1,8 @@
 package helpers
 
 import (
+	"github.com/quinta-nails/bots/internal/db"
 	pb "github.com/quinta-nails/protobuf/gen/go/telegram_backend"
-	"github.com/quinta-nails/telegram-backend/internal/db"
 )
 
 func NewPbBotFromBotRow(row *db.Bot) *pb.Bot {

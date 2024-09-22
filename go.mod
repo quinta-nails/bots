@@ -1,4 +1,4 @@
-module github.com/quinta-nails/telegram-backend
+module github.com/quinta-nails/bots
 
 go 1.23.0
 

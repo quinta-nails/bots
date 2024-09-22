@@ -3,7 +3,7 @@ package db
 import (
 	"github.com/amacneil/dbmate/v2/pkg/dbmate"
 	"github.com/caarlos0/env/v11"
-	"github.com/quinta-nails/telegram-backend/internal/config"
+	"github.com/quinta-nails/bots/internal/config"
 )
 
 func ApplyMigrations() error {
