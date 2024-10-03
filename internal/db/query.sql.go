@@ -43,6 +43,25 @@ func (q *Queries) AddBot(ctx context.Context, arg AddBotParams) (Bot, error) {
 	return i, err
 }
 
+const getBotById = `-- name: GetBotById :one
+SELECT id, token, first_name, username, created_at
+FROM bots
+WHERE id = $1
+`
+
+func (q *Queries) GetBotById(ctx context.Context, id int64) (Bot, error) {
+	row := q.db.QueryRowContext(ctx, getBotById, id)
+	var i Bot
+	err := row.Scan(
+		&i.ID,
+		&i.Token,
+		&i.FirstName,
+		&i.Username,
+		&i.CreatedAt,
+	)
+	return i, err
+}
+
 const getBotByToken = `-- name: GetBotByToken :one
 SELECT id, token, first_name, username, created_at
 FROM bots

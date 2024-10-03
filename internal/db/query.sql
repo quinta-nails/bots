@@ -1,3 +1,8 @@
+-- name: GetBotById :one
+SELECT *
+FROM bots
+WHERE id = $1;
+
 -- name: GetBotByToken :one
 SELECT *
 FROM bots

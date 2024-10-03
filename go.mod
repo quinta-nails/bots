@@ -6,9 +6,9 @@ require (
 	github.com/amacneil/dbmate/v2 v2.20.0
 	github.com/bufbuild/protovalidate-go v0.6.5
 	github.com/caarlos0/env/v11 v11.2.2
-	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1
+	github.com/go-telegram/bot v1.8.2
 	github.com/joho/godotenv v1.5.1
-	github.com/quinta-nails/protobuf v0.0.2-0.20240922144844-b751269d8cc5
+	github.com/quinta-nails/protobuf v0.0.2-0.20241003163133-082654d20cd4
 	google.golang.org/grpc v1.66.2
 )
 
