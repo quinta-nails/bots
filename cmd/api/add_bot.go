@@ -26,7 +26,7 @@ func (s *Service) AddBot(ctx context.Context, in *pb.AddBotRequest) (*pb.AddBotR
 		return nil, errors.New("bot already exists")
 	}
 
-	b, err := helpers.NewTelegramBot(botModel.Token)
+	b, err := helpers.NewTelegramBot(in.Token)
 	if err != nil {
 		return nil, err
 	}
