@@ -16,6 +16,7 @@ import (
 func (s *Service) SetupBot(ctx context.Context, in *pb.SetupBotRequest) (*pb.SetupBotResponse, error) {
 	resp := &pb.SetupBotResponse{}
 
+	//@TODO можно оптимизировать и не парсить конфиг в каждом запросе
 	frontendConfig := config.FrontendConfig{}
 	if err := env.Parse(&frontendConfig); err != nil {
 		return nil, err
