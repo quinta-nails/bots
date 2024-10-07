@@ -14,6 +14,8 @@ import (
 )
 
 func (s *Service) SetupBot(ctx context.Context, in *pb.SetupBotRequest) (*pb.SetupBotResponse, error) {
+	resp := &pb.SetupBotResponse{}
+
 	frontendConfig := config.FrontendConfig{}
 	if err := env.Parse(&frontendConfig); err != nil {
 		return nil, err
@@ -34,12 +36,14 @@ func (s *Service) SetupBot(ctx context.Context, in *pb.SetupBotRequest) (*pb.Set
 		return nil, err
 	}
 
+	url := fmt.Sprintf("%s?bot=%d", frontendConfig.URL, botModel.ID)
+
 	_, err = b.SetChatMenuButton(ctx, &bot.SetChatMenuButtonParams{
 		MenuButton: &models.MenuButtonWebApp{
 			Type: `web_app`,
 			Text: `Записаться`,
 			WebApp: models.WebAppInfo{
-				URL: fmt.Sprintf("%s?bot=%d", frontendConfig.URL, botModel.ID),
+				URL: url,
 			},
 		},
 	})
@@ -47,5 +51,7 @@ func (s *Service) SetupBot(ctx context.Context, in *pb.SetupBotRequest) (*pb.Set
 		return nil, err
 	}
 
-	return &pb.SetupBotResponse{}, nil
+	resp.Url = url
+
+	return resp, nil
 }

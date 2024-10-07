@@ -35,6 +35,8 @@ github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZb
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/quinta-nails/protobuf v0.0.2-0.20241003163133-082654d20cd4 h1:ehRoGyfTYFDYM4ESBWfx7ZOCteiEgDrGaSupjXGiTZQ=
 github.com/quinta-nails/protobuf v0.0.2-0.20241003163133-082654d20cd4/go.mod h1:vxhR+X6DVwkO4GSisypbJZY0RGsZG6FrtEzkx1c1K1k=
+github.com/quinta-nails/protobuf v0.0.2-0.20241006124440-176a80491ee8 h1:1uCrueWm4qB2o9KM7oi78D/PXsdtDn35fvkb4RUPDKU=
+github.com/quinta-nails/protobuf v0.0.2-0.20241006124440-176a80491ee8/go.mod h1:vxhR+X6DVwkO4GSisypbJZY0RGsZG6FrtEzkx1c1K1k=
 github.com/stoewer/go-strcase v1.3.0 h1:g0eASXYtp+yvN9fK8sH94oCIk0fau9uV1/ZdJ0AVEzs=
 github.com/stoewer/go-strcase v1.3.0/go.mod h1:fAH5hQ5pehh+j3nZfvwdk2RgEgQjAoM8wodgtPmh1xo=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

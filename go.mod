@@ -8,7 +8,7 @@ require (
 	github.com/caarlos0/env/v11 v11.2.2
 	github.com/go-telegram/bot v1.8.2
 	github.com/joho/godotenv v1.5.1
-	github.com/quinta-nails/protobuf v0.0.2-0.20241003163133-082654d20cd4
+	github.com/quinta-nails/protobuf v0.0.2-0.20241006124440-176a80491ee8
 	google.golang.org/grpc v1.66.2
 )
 
