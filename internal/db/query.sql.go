@@ -7,6 +7,7 @@ package db
 
 import (
 	"context"
+	"database/sql"
 )
 
 const addBot = `-- name: AddBot :one
@@ -21,7 +22,7 @@ VALUES (
     $3
 )
 ON CONFLICT (token) DO NOTHING
-RETURNING id, token, first_name, username, created_at
+RETURNING id, studio_id, token, first_name, username, created_at
 `
 
 type AddBotParams struct {
@@ -35,6 +36,7 @@ func (q *Queries) AddBot(ctx context.Context, arg AddBotParams) (Bot, error) {
 	var i Bot
 	err := row.Scan(
 		&i.ID,
+		&i.StudioID,
 		&i.Token,
 		&i.FirstName,
 		&i.Username,
@@ -44,7 +46,7 @@ func (q *Queries) AddBot(ctx context.Context, arg AddBotParams) (Bot, error) {
 }
 
 const getBotById = `-- name: GetBotById :one
-SELECT id, token, first_name, username, created_at
+SELECT id, studio_id, token, first_name, username, created_at
 FROM bots
 WHERE id = $1
 `
@@ -54,6 +56,7 @@ func (q *Queries) GetBotById(ctx context.Context, id int64) (Bot, error) {
 	var i Bot
 	err := row.Scan(
 		&i.ID,
+		&i.StudioID,
 		&i.Token,
 		&i.FirstName,
 		&i.Username,
@@ -63,7 +66,7 @@ func (q *Queries) GetBotById(ctx context.Context, id int64) (Bot, error) {
 }
 
 const getBotByToken = `-- name: GetBotByToken :one
-SELECT id, token, first_name, username, created_at
+SELECT id, studio_id, token, first_name, username, created_at
 FROM bots
 WHERE token = $1
 `
@@ -73,10 +76,23 @@ func (q *Queries) GetBotByToken(ctx context.Context, token string) (Bot, error) 
 	var i Bot
 	err := row.Scan(
 		&i.ID,
+		&i.StudioID,
 		&i.Token,
 		&i.FirstName,
 		&i.Username,
 		&i.CreatedAt,
 	)
 	return i, err
+}
+
+const getStudioIdByBotId = `-- name: GetStudioIdByBotId :one
+SELECT studio_id FROM bots
+WHERE id = $1
+`
+
+func (q *Queries) GetStudioIdByBotId(ctx context.Context, id int64) (sql.NullInt64, error) {
+	row := q.db.QueryRowContext(ctx, getStudioIdByBotId, id)
+	var studio_id sql.NullInt64
+	err := row.Scan(&studio_id)
+	return studio_id, err
 }

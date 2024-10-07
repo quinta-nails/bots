@@ -21,3 +21,7 @@ VALUES (
 )
 ON CONFLICT (token) DO NOTHING
 RETURNING *;
+
+-- name: GetStudioIdByBotId :one
+SELECT studio_id FROM bots
+WHERE id = $1;
