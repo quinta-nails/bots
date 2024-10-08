@@ -91,15 +91,3 @@ func (q *Queries) GetBotByToken(ctx context.Context, token string) (Bot, error) 
 	)
 	return i, err
 }
-
-const getStudioIdByBotId = `-- name: GetStudioIdByBotId :one
-SELECT studio_id FROM bots
-WHERE id = $1
-`
-
-func (q *Queries) GetStudioIdByBotId(ctx context.Context, id int64) (int64, error) {
-	row := q.db.QueryRowContext(ctx, getStudioIdByBotId, id)
-	var studio_id int64
-	err := row.Scan(&studio_id)
-	return studio_id, err
-}
