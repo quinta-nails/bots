@@ -37,7 +37,7 @@ func (s *Service) SetupBot(ctx context.Context, in *pb.SetupBotRequest) (*pb.Set
 		return nil, err
 	}
 
-	url := fmt.Sprintf("%s?bot=%d", frontendConfig.URL, botModel.ID)
+	url := fmt.Sprintf("%s?studioId=%d", frontendConfig.URL, botModel.StudioID)
 
 	_, err = b.SetChatMenuButton(ctx, &bot.SetChatMenuButtonParams{
 		MenuButton: &models.MenuButtonWebApp{

@@ -7,19 +7,20 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const addBot = `-- name: AddBot :one
 INSERT INTO bots (
     token,
+    studio_id,
     first_name,
     username
 )
 VALUES (
     $1,
     $2,
-    $3
+    $3,
+    $4
 )
 ON CONFLICT (token) DO NOTHING
 RETURNING id, studio_id, token, first_name, username, created_at
@@ -27,12 +28,18 @@ RETURNING id, studio_id, token, first_name, username, created_at
 
 type AddBotParams struct {
 	Token     string
+	StudioID  int64
 	FirstName string
 	Username  string
 }
 
 func (q *Queries) AddBot(ctx context.Context, arg AddBotParams) (Bot, error) {
-	row := q.db.QueryRowContext(ctx, addBot, arg.Token, arg.FirstName, arg.Username)
+	row := q.db.QueryRowContext(ctx, addBot,
+		arg.Token,
+		arg.StudioID,
+		arg.FirstName,
+		arg.Username,
+	)
 	var i Bot
 	err := row.Scan(
 		&i.ID,
@@ -90,9 +97,9 @@ SELECT studio_id FROM bots
 WHERE id = $1
 `
 
-func (q *Queries) GetStudioIdByBotId(ctx context.Context, id int64) (sql.NullInt64, error) {
+func (q *Queries) GetStudioIdByBotId(ctx context.Context, id int64) (int64, error) {
 	row := q.db.QueryRowContext(ctx, getStudioIdByBotId, id)
-	var studio_id sql.NullInt64
+	var studio_id int64
 	err := row.Scan(&studio_id)
 	return studio_id, err
 }

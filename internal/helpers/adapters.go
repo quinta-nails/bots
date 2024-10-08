@@ -10,5 +10,6 @@ func NewPbBotFromBotRow(row *db.Bot) *pb.Bot {
 		Id:        row.ID,
 		FirstName: row.FirstName,
 		Username:  row.Username,
+		StudioId:  row.StudioID,
 	}
 }

@@ -11,7 +11,7 @@ import (
 
 type Bot struct {
 	ID        int64
-	StudioID  sql.NullInt64
+	StudioID  int64
 	Token     string
 	FirstName string
 	Username  string

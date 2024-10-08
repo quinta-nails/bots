@@ -43,6 +43,7 @@ func (s *Service) AddBot(ctx context.Context, in *pb.AddBotRequest) (*pb.AddBotR
 		Token:     in.Token,
 		FirstName: telegramBot.FirstName,
 		Username:  telegramBot.Username,
+		StudioID:  in.StudioId,
 	})
 	if err != nil {
 		return nil, err

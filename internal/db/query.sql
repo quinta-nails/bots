@@ -11,17 +11,15 @@ WHERE token = $1;
 -- name: AddBot :one
 INSERT INTO bots (
     token,
+    studio_id,
     first_name,
     username
 )
 VALUES (
     $1,
     $2,
-    $3
+    $3,
+    $4
 )
 ON CONFLICT (token) DO NOTHING
 RETURNING *;
-
--- name: GetStudioIdByBotId :one
-SELECT studio_id FROM bots
-WHERE id = $1;

@@ -2,7 +2,7 @@
 
 CREATE TABLE bots (
     "id" BIGSERIAL PRIMARY KEY,
-    "studio_id" BIGSERIAL UNIQUE,
+    "studio_id" BIGINT NOT NULL UNIQUE,
     "token" VARCHAR NOT NULL UNIQUE,
     "first_name" VARCHAR NOT NULL,
     "username" VARCHAR NOT NULL,
